@@ -1,0 +1,49 @@
+{
+  "name": "global-forests-pro",
+  "version": "1.0.0",
+  "description": "Site moderno para GlobalForests Pro - Líder em Sustentabilidade Corporativa",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve .",
+    "dev": "serve -s . -l 3000",
+    "build": "echo 'No build step required for static site'",
+    "deploy": "vercel --prod",
+    "preview": "vercel"
+  },
+  "keywords": [
+    "sustentabilidade",
+    "ESG",
+    "carbono neutro",
+    "reflorestamento",
+    "consultoria ambiental",
+    "tecnologia verde",
+    "IA ambiental",
+    "compensação carbono"
+  ],
+  "author": {
+    "name": "Julio Campos Machado",
+    "email": "juliocamposmachado@gmail.com",
+    "url": "https://likelook.wixsite.com/solutions"
+  },
+  "license": "MIT",
+  "homepage": "https://global-forests-pro.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AstridNielsen-lab/global-forests.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AstridNielsen-lab/global-forests/issues"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
+

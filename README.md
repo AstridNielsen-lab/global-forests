@@ -1,3 +1,98 @@
+# GlobalForests Pro 🌱
+
+## Líder em Sustentabilidade Corporativa
+
+Um site moderno e interativo para a GlobalForests Pro, empresa especializada em soluções de sustentabilidade, compensação de carbono e consultoria ESG.
+
+## 🚀 Deploy Automático
+
+Este projeto está configurado para deploy automático no Vercel através do GitHub.
+
+### 📋 Pré-requisitos
+
+1. Conta no [Vercel](https://vercel.com)
+2. Repositório no GitHub: `https://github.com/AstridNielsen-lab/global-forests`
+
+### 🔗 Como Configurar Deploy Automático
+
+1. **Acesse o Vercel Dashboard:**
+   - Vá para [vercel.com](https://vercel.com)
+   - Faça login com sua conta GitHub
+
+2. **Importe o Projeto:**
+   - Clique em "New Project"
+   - Selecione "Import Git Repository"
+   - Escolha `AstridNielsen-lab/global-forests`
+
+3. **Configurações do Projeto:**
+   - **Project Name:** `global-forests-pro`
+   - **Framework Preset:** Other
+   - **Root Directory:** `./` (deixe em branco)
+   - **Build Command:** (deixe em branco - é um site estático)
+   - **Output Directory:** `./` (deixe em branco)
+
+4. **Deploy:**
+   - Clique em "Deploy"
+   - Aguarde o build completar
+
+### ⚡ Deploy Automático Configurado
+
+Após a configuração inicial, todos os pushes para a branch `main` farão deploy automático:
+
+- ✅ Push para `main` → Deploy automático
+- ✅ Cache otimizado para assets
+- ✅ HTTPS automático
+- ✅ CDN global
+
+### 🌐 URL de Produção
+
+Após o deploy, o site estará disponível em:
+- URL Vercel: `https://global-forests-pro.vercel.app`
+- Domínio personalizado (se configurado)
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Frontend:** HTML5, CSS3, JavaScript (ES6+)
+- **Frameworks:** Bootstrap 5, AOS (Animate On Scroll)
+- **Icons:** Font Awesome 6
+- **Fonts:** Google Fonts (Inter, Playfair Display)
+- **AI:** Google Gemini API para chatbot
+- **Deploy:** Vercel
+- **Versionamento:** Git + GitHub
+
+## 🤖 Chatbot AI
+
+- **Persona:** Julio Campos Machado - Especialista em Sustentabilidade
+- **Tecnologia:** Google Gemini API
+- **Funcionalidades:** Respostas contextuais sobre ESG, carbono, reflorestamento
+
+## 📊 Métricas da Empresa
+
+- 🌳 500M+ árvores plantadas
+- ☁️ 1.2B toneladas CO₂ compensadas
+- 🏢 2.500+ empresas parceiras
+- 🌍 84 países impactados
+
+## 👨‍💻 Desenvolvedor
+
+**Julio Campos Machado**
+- 📧 Email: juliocamposmachado@gmail.com
+- 📱 WhatsApp: +55 (11) 97060-3441
+- 🏢 Empresa: Like Look Solutions
+- 📍 São Paulo - SP
+
+## 📄 Licença
+
+© 2024 GlobalForests Pro. Desenvolvido por Julio Campos Machado - Like Look Solutions.
+
+---
+
+### 🔄 Status do Deploy
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/AstridNielsen-lab/global-forests)
+
+**Último Update:** 2025-06-15
+
 # GlobalForests Pro - Site Melhorado e Comercial
 
 ## 🌱 Sobre o Projeto
