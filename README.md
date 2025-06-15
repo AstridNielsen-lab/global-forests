@@ -248,9 +248,37 @@ Todos os breakpoints são otimizados com:
 3. **GitHub Pages** (Gratuito)
    ```bash
    # Integração com GitHub
-   # Deploy automático
+   # Deploy automático da branch main
    # Domínio customizado
    ```
+
+### Configuração GitHub Pages
+
+**⚠️ IMPORTANTE: Configure o GitHub Pages para usar a branch `main`**
+
+1. **Acesse as configurações do repositório**:
+   - Vá para: `https://github.com/AstridNielsen-lab/global-forests/settings/pages`
+
+2. **Configure a fonte (Source)**:
+   - Source: `Deploy from a branch`
+   - Branch: `main` (não master)
+   - Folder: `/ (root)`
+
+3. **Salve as configurações**
+   - Clique em "Save"
+   - Aguarde alguns minutos para o deploy
+
+4. **Acesse seu site**:
+   - URL: `https://astridnielsen-lab.github.io/global-forests/`
+
+**Comando para forçar atualização local**:
+```bash
+# Certifique-se de estar na branch main
+git checkout main
+
+# Force push se necessário (apenas na primeira vez)
+git push -f origin main
+```
 
 ### Configuração de DNS
 ```
