@@ -76,10 +76,12 @@ Após o deploy, o site estará disponível em:
 ## 👨‍💻 Desenvolvedor
 
 **Julio Campos Machado**
-- 📧 Email: juliocamposmachado@gmail.com
-- 📱 WhatsApp: +55 (11) 97060-3441
-- 🏢 Empresa: Like Look Solutions
-- 📍 São Paulo - SP
+- 📧 **Email:** juliocamposmachado@gmail.com
+- 📱 **WhatsApp:** +55 (11) 97060-3441
+- 🏢 **Empresa:** Like Look Solutions
+- 📍 **Localização:** São Paulo - SP
+- 💼 **LinkedIn:** [linkedin.com/in/juliocamposmachado](https://linkedin.com/in/juliocamposmachado)
+- 🌐 **Website:** [likelooksolutions.com](https://likelooksolutions.com)
 
 ## 📄 Licença
 
@@ -416,15 +418,38 @@ Valor: seu-site.netlify.app
 - Analytics dashboard
 - Uptime monitoring
 
-## 🤝 Contribuições
+## 🤝 Como Contribuir
 
 Para contribuir com o projeto:
 
-1. Faça um fork do repositório
-2. Crie uma branch para sua feature
-3. Commit suas mudanças
-4. Push para a branch
-5. Abra um Pull Request
+1. Faça um fork do repositório.
+2. Crie uma branch para sua feature (`git checkout -b feature/MinhaFeature`).
+3. Commit suas mudanças (`git commit -m 'Minha nova feature'`).
+4. Push para a branch (`git push origin feature/MinhaFeature`).
+5. Abra um Pull Request.
+
+## 📬 Contato
+
+### 👨‍💻 Desenvolvedor Principal
+**Julio Campos Machado**
+- 📧 **Email:** juliocamposmachado@gmail.com
+- 📱 **WhatsApp:** +55 (11) 97060-3441
+- 💼 **LinkedIn:** [linkedin.com/in/juliocamposmachado](https://linkedin.com/in/juliocamposmachado)
+- 🌐 **Website:** [likelooksolutions.com](https://likelooksolutions.com)
+- 🏢 **Empresa:** Like Look Solutions
+- 📍 **Localização:** São Paulo - SP, Brasil
+
+### 💡 Como Contribuir
+
+**Interessado em colaborar?** Entre em contato através dos canais acima para:
+- 🚀 Discussões sobre novas funcionalidades
+- 🐛 Relatórios de bugs e melhorias
+- 💻 Colaboração em desenvolvimento
+- 🎨 Contribuições de design e UX
+- 📝 Melhorias na documentação
+- 🌱 Ideias para sustentabilidade digital
+
+**Respondemos em até 24 horas!** ⚡
 
 ## 📄 Licença
 
