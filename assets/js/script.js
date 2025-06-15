@@ -627,6 +627,63 @@ window.addEventListener('unhandledrejection', (e) => {
 });
 
 // ======================
+// COPY TO CLIPBOARD FUNCTIONALITY
+// ======================
+function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+        // Use modern clipboard API
+        navigator.clipboard.writeText(text).then(() => {
+            showCopySuccess();
+        }).catch(err => {
+            console.error('Erro ao copiar: ', err);
+            fallbackCopyTextToClipboard(text);
+        });
+    } else {
+        // Fallback method
+        fallbackCopyTextToClipboard(text);
+    }
+}
+
+// Fallback copy method
+function fallbackCopyTextToClipboard(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+            showCopySuccess();
+        } else {
+            showCopyError();
+        }
+    } catch (err) {
+        console.error('Erro ao copiar: ', err);
+        showCopyError();
+    }
+    
+    document.body.removeChild(textArea);
+}
+
+// Show copy success message
+function showCopySuccess() {
+    showNotification('✅ Copiado com sucesso!', 'success');
+}
+
+// Show copy error message
+function showCopyError() {
+    showNotification('❌ Erro ao copiar. Tente selecionar e copiar manualmente.', 'error');
+}
+
+// Make function globally available
+window.copyToClipboard = copyToClipboard;
+
+// ======================
 // EXPORTS (if using modules)
 // ======================
 if (typeof module !== 'undefined' && module.exports) {
@@ -635,7 +692,8 @@ if (typeof module !== 'undefined' && module.exports) {
         trackEvent,
         debounce,
         throttle,
-        isInViewport
+        isInViewport,
+        copyToClipboard
     };
 }
 
