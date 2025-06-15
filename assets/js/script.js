@@ -684,6 +684,244 @@ function showCopyError() {
 window.copyToClipboard = copyToClipboard;
 
 // ======================
+// CHATBOT FUNCTIONALITY
+// ======================
+const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent";
+const API_KEY = "AIzaSyDNSDXAocB4YPm4kY6v9L9C9OtJkQ1y-Uk";
+
+// Chatbot state
+let isChatbotOpen = false;
+let conversationHistory = [];
+
+// Initialize chatbot
+function initChatbot() {
+    const chatbotButton = document.getElementById('chatbot-button');
+    const chatbotWindow = document.getElementById('chatbot-window');
+    const chatbotClose = document.getElementById('chatbot-close');
+    const chatbotInput = document.getElementById('chatbot-input');
+    const chatbotSend = document.getElementById('chatbot-send');
+    const suggestionBtns = document.querySelectorAll('.suggestion-btn');
+
+    // Toggle chatbot window
+    chatbotButton.addEventListener('click', toggleChatbot);
+    chatbotClose.addEventListener('click', closeChatbot);
+
+    // Send message events
+    chatbotSend.addEventListener('click', sendMessage);
+    chatbotInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
+    // Enable/disable send button based on input
+    chatbotInput.addEventListener('input', () => {
+        const hasText = chatbotInput.value.trim().length > 0;
+        chatbotSend.disabled = !hasText;
+    });
+
+    // Suggestion buttons
+    suggestionBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const message = btn.getAttribute('data-message');
+            chatbotInput.value = message;
+            sendMessage();
+        });
+    });
+}
+
+function toggleChatbot() {
+    const chatbotWindow = document.getElementById('chatbot-window');
+    isChatbotOpen = !isChatbotOpen;
+    
+    if (isChatbotOpen) {
+        chatbotWindow.classList.add('open');
+        document.getElementById('chatbot-input').focus();
+    } else {
+        chatbotWindow.classList.remove('open');
+    }
+}
+
+function closeChatbot() {
+    const chatbotWindow = document.getElementById('chatbot-window');
+    chatbotWindow.classList.remove('open');
+    isChatbotOpen = false;
+}
+
+async function sendMessage() {
+    const input = document.getElementById('chatbot-input');
+    const message = input.value.trim();
+    
+    if (!message) return;
+
+    // Add user message to chat
+    addMessageToChat(message, 'user');
+    input.value = '';
+    document.getElementById('chatbot-send').disabled = true;
+
+    // Show typing indicator
+    showTypingIndicator();
+
+    try {
+        // Get response from Gemini API
+        const response = await getChatbotResponse(message);
+        hideTypingIndicator();
+        addMessageToChat(response, 'bot');
+    } catch (error) {
+        console.error('Erro no chatbot:', error);
+        hideTypingIndicator();
+        addMessageToChat(
+            'Desculpe, estou enfrentando problemas técnicos no momento. ' +
+            'Por favor, entre em contato conosco pelo WhatsApp: +55 (11) 97060-3441 ' +
+            'ou email: juliocamposmachado@gmail.com',
+            'bot'
+        );
+    }
+}
+
+async function getChatbotResponse(userMessage) {
+    const systemPrompt = `Você é Julio Campos Machado, especialista da Global Forests Pro, uma empresa líder em sustentabilidade corporativa. Suas características:
+
+🌱 PERSONA:
+- Especialista em ESG, compensação de carbono e reflorestamento
+- Desenvolvedor da plataforma Global Forests Pro
+- Entusiasta de tecnologia verde e IA ambiental
+- Comunicação clara, técnica mas acessível
+- Sempre positivo e solucionista
+
+🏢 EMPRESA - GLOBAL FORESTS PRO:
+- Líder em sustentabilidade corporativa
+- Serviços: Compensação de carbono, Consultoria ESG, IA Verde
+- Tecnologia: IA, monitoramento por satélite, blockchain
+- 500M+ árvores plantadas
+- 1.2B toneladas CO₂ compensadas
+- 2.500+ empresas parceiras
+- Atuação em 84 países
+
+💼 SERVIÇOS PRINCIPAIS:
+1. **Compensação de Carbono** ($25/tonelada CO₂)
+   - Certificação internacional
+   - Monitoramento satelital
+   - Blockchain verification
+   - Relatórios tempo real
+
+2. **Consultoria ESG Completa** ($5.000+ por projeto)
+   - Diagnóstico ESG 360°
+   - Estratégia personalizada
+   - Certificações B-Corp, ISO
+   - Relatórios sustentabilidade
+
+3. **Plataforma IA Verde** ($2.500+ por mês)
+   - IA predictiva de impacto
+   - Otimização recursos
+   - Dashboard executivo
+   - API integração
+
+📞 CONTATO:
+- WhatsApp: +55 (11) 97060-3441
+- Email: juliocamposmachado@gmail.com
+- Endereço: Rua Dante Pellacani, CEP 03334-070, São Paulo - SP
+- Site: Global Forests (criado por Like Look Solutions)
+
+🎯 COMO RESPONDER:
+- Seja Julio Campos Machado em primeira pessoa
+- Responda sobre sustentabilidade, ESG, carbono, reflorestamento
+- Ofereça soluções específicas da Global Forests Pro
+- Use dados e métricas reais da empresa
+- Mantenha tom profissional mas amigável
+- Convide para contato direto quando apropriado
+- Limite respostas a 2-3 parágrafos
+
+Responda como Julio Campos Machado:`;
+
+    const requestBody = {
+        contents: [{
+            parts: [{
+                text: `${systemPrompt}\n\nPergunta do usuário: ${userMessage}`
+            }]
+        }],
+        generationConfig: {
+            temperature: 0.7,
+            maxOutputTokens: 500,
+            topP: 0.9,
+            topK: 40
+        }
+    };
+
+    const response = await fetch(`${API_URL}?key=${API_KEY}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody)
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    
+    if (data.candidates && data.candidates[0] && data.candidates[0].content) {
+        return data.candidates[0].content.parts[0].text;
+    } else {
+        throw new Error('Resposta inválida da API');
+    }
+}
+
+function addMessageToChat(message, sender) {
+    const messagesContainer = document.getElementById('chatbot-messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${sender}-message`;
+    
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('pt-BR', { 
+        hour: '2-digit', 
+        minute: '2-digit' 
+    });
+    
+    if (sender === 'user') {
+        messageDiv.innerHTML = `
+            <div class="message-avatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=3498DB&color=fff&size=30&bold=true" alt="Usuário">
+            </div>
+            <div class="message-content">
+                <p>${message}</p>
+                <div class="message-time">${timeString}</div>
+            </div>
+        `;
+    } else {
+        messageDiv.innerHTML = `
+            <div class="message-avatar">
+                <img src="https://ui-avatars.com/api/?name=Julio+Campos&background=2ECC71&color=fff&size=30&bold=true" alt="Julio">
+            </div>
+            <div class="message-content">
+                <p>${message}</p>
+                <div class="message-time">${timeString}</div>
+            </div>
+        `;
+    }
+    
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function showTypingIndicator() {
+    const typingIndicator = document.getElementById('typing-indicator');
+    typingIndicator.style.display = 'flex';
+}
+
+function hideTypingIndicator() {
+    const typingIndicator = document.getElementById('typing-indicator');
+    typingIndicator.style.display = 'none';
+}
+
+// Initialize chatbot when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initChatbot();
+});
+
+// ======================
 // EXPORTS (if using modules)
 // ======================
 if (typeof module !== 'undefined' && module.exports) {

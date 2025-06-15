@@ -761,49 +761,37 @@
                 
                 <div class="col-lg-2 col-md-6">
                     <div class="footer-links">
-                        <h5>Serviços</h5>
+                        <h5>Navegação</h5>
                         <ul>
-                            <li><a href="#">Compensação de Carbono</a></li>
-                            <li><a href="#">Consultoria ESG</a></li>
-                            <li><a href="#">IA Verde</a></li>
-                            <li><a href="#">Reflorestamento</a></li>
+                            <li><a href="#home">Início</a></li>
+                            <li><a href="#about">Sobre</a></li>
+                            <li><a href="#services">Serviços</a></li>
+                            <li><a href="#solutions">Soluções</a></li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="col-lg-2 col-md-6">
                     <div class="footer-links">
-                        <h5>Empresa</h5>
+                        <h5>Mais Informações</h5>
                         <ul>
-                            <li><a href="#">Sobre Nós</a></li>
-                            <li><a href="#">Carreiras</a></li>
-                            <li><a href="#">Investidores</a></li>
-                            <li><a href="#">Imprensa</a></li>
+                            <li><a href="#impact">Nosso Impacto</a></li>
+                            <li><a href="#contribute">Como Contribuir</a></li>
+                            <li><a href="#contact">Contato</a></li>
+                            <li><a href="https://likelook.wixsite.com/solutions" target="_blank">Like Look Solutions</a></li>
                         </ul>
                     </div>
                 </div>
                 
-                <div class="col-lg-2 col-md-6">
+                <div class="col-lg-4 col-md-12">
                     <div class="footer-links">
-                        <h5>Recursos</h5>
-                        <ul>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Estudos de Caso</a></li>
-                            <li><a href="#">Whitepapers</a></li>
-                            <li><a href="#">API Docs</a></li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="col-lg-2 col-md-6">
-                    <div class="footer-links">
-                        <h5>Suporte</h5>
-                        <ul>
-                            <li><a href="#">Central de Ajuda</a></li>
-                            <li><a href="#">Contato</a></li>
-                            <li><a href="#">Status do Sistema</a></li>
-                            <li><a href="#">Política de Privacidade</a></li>
-                        </ul>
+                        <h5>Desenvolvedor</h5>
+                        <div class="developer-contact">
+                            <p><strong>Julio Campos Machado</strong></p>
+                            <p><i class="fas fa-envelope"></i> juliocamposmachado@gmail.com</p>
+                            <p><i class="fab fa-whatsapp"></i> +55 (11) 97060-3441</p>
+                            <p><i class="fas fa-map-marker-alt"></i> São Paulo - SP</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -829,6 +817,75 @@
     <!-- Back to Top -->
     <div class="back-to-top">
         <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Chatbot -->
+    <div id="chatbot-container" class="chatbot-container">
+        <div id="chatbot-button" class="chatbot-button">
+            <div class="chatbot-avatar">
+                <img src="https://ui-avatars.com/api/?name=Julio+Campos&background=2ECC71&color=fff&size=50&bold=true" alt="Julio Campos Machado">
+            </div>
+            <div class="chatbot-pulse"></div>
+        </div>
+        
+        <div id="chatbot-window" class="chatbot-window">
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <div class="chatbot-avatar-header">
+                        <img src="https://ui-avatars.com/api/?name=Julio+Campos&background=2ECC71&color=fff&size=40&bold=true" alt="Julio Campos Machado">
+                        <div class="online-indicator"></div>
+                    </div>
+                    <div class="chatbot-info">
+                        <h4>Julio Campos Machado</h4>
+                        <p>Especialista Global Forests</p>
+                    </div>
+                </div>
+                <button id="chatbot-close" class="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div id="chatbot-messages" class="chatbot-messages">
+                <div class="message bot-message">
+                    <div class="message-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Julio+Campos&background=2ECC71&color=fff&size=30&bold=true" alt="Julio">
+                    </div>
+                    <div class="message-content">
+                        <p>👋 Olá! Eu sou o Julio Campos Machado, especialista da Global Forests Pro.</p>
+                        <p>Como posso ajudá-lo com nossos projetos de sustentabilidade e compensação de carbono?</p>
+                        <div class="message-time">Agora</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chatbot-input-container">
+                <div class="typing-indicator" id="typing-indicator" style="display: none;">
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <span>Julio está digitando...</span>
+                </div>
+                <div class="chatbot-input">
+                    <input type="text" id="chatbot-input" placeholder="Digite sua pergunta sobre sustentabilidade..." maxlength="500">
+                    <button id="chatbot-send" disabled>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="chatbot-suggestions">
+                    <button class="suggestion-btn" data-message="Como posso neutralizar o carbono da minha empresa?">
+                        💡 Neutralização de Carbono
+                    </button>
+                    <button class="suggestion-btn" data-message="Quais são os serviços de consultoria ESG?">
+                        📊 Consultoria ESG
+                    </button>
+                    <button class="suggestion-btn" data-message="Como funciona o monitoramento por satélite?">
+                        🛰️ Monitoramento
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->
