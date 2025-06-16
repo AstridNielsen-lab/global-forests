@@ -340,17 +340,28 @@ body {
 .hero-image {
   position: relative;
   height: 500px;
+  width: 100%;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
 }
 
 .floating-card {
-  position: absolute;
+  position: static;
   background: white;
-  padding: 20px;
+  padding: 20px 30px;
   border-radius: var(--radius-medium);
   box-shadow: var(--shadow-medium);
   text-align: center;
-  min-width: 140px;
+  width: 220px;
+  height: auto;
   animation: float 3s ease-in-out infinite;
+  z-index: 5;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .floating-card i {
@@ -362,31 +373,27 @@ body {
 .floating-card h4 {
   font-size: 16px;
   font-weight: 600;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   color: var(--dark-color);
+  line-height: 1.2;
 }
 
 .floating-card p {
   font-size: 12px;
   color: var(--gray-medium);
   margin: 0;
+  line-height: 1.3;
 }
 
 .carbon-card {
-  top: 20%;
-  right: 20%;
   animation-delay: 0s;
 }
 
 .impact-card {
-  top: 50%;
-  left: 10%;
   animation-delay: 1s;
 }
 
 .certification-card {
-  bottom: 20%;
-  right: 30%;
   animation-delay: 2s;
 }
 
@@ -1033,7 +1040,7 @@ body {
 /* ===== BACK TO TOP ===== */
 .back-to-top {
   position: fixed;
-  bottom: 30px;
+  bottom: 100px;
   right: 30px;
   width: 50px;
   height: 50px;
@@ -1048,7 +1055,7 @@ body {
   transition: all var(--transition-fast);
   opacity: 0;
   visibility: hidden;
-  z-index: 999;
+  z-index: 998;
 }
 
 .back-to-top.show {
@@ -1078,13 +1085,19 @@ body {
   
   .floating-card {
     position: static;
-    margin: 20px auto;
+    margin: 0 auto;
     display: block;
+    width: 200px;
+    max-width: none;
   }
   
   .hero-image {
     height: auto;
     margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
   }
   
   .metrics-grid {
@@ -1125,7 +1138,7 @@ body {
   }
   
   .back-to-top {
-    bottom: 20px;
+    bottom: 90px;
     right: 20px;
     width: 45px;
     height: 45px;
@@ -1466,7 +1479,7 @@ body {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 1000;
+  z-index: 1001;
 }
 
 .chatbot-button {
@@ -1799,6 +1812,8 @@ body {
   .chatbot-window {
     width: 300px;
     height: 450px;
+    right: 0;
+    bottom: 75px;
   }
   
   .chatbot-container {
@@ -1814,6 +1829,25 @@ body {
   .chatbot-avatar img {
     width: 40px;
     height: 40px;
+  }
+  
+  .floating-card {
+    position: static !important;
+    margin: 15px auto;
+    display: block;
+    min-width: 120px;
+    max-width: 200px;
+    transform: none !important;
+  }
+  
+  .carbon-card,
+  .impact-card,
+  .certification-card {
+    position: static !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
   }
 }
 
