@@ -455,14 +455,6 @@ Para contribuir com o projeto:
 
 Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
-## 📞 Contato e Suporte
-
-Para dúvidas ou suporte:
-
-- **Email**: contato@globalforestspro.com
-- **Website**: https://globalforestspro.com
-- **LinkedIn**: /company/globalforestspro
-
 ---
 
 ## 🌟 Recursos Adicionais
